@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>RHand.qml</file>
+        <file>Graphic.qml</file>
+        <file>LHand.qml</file>
+        <file>LeftHand.png</file>
+        <file>RightHand.png</file>
+    </qresource>
+</RCC>

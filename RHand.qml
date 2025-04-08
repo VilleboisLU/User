@@ -1,6 +1,7 @@
 import QtQuick 2.5
-import QtQuick.Controls 1.4
-import QtQuick.Window 2.2
+import QtQuick.Controls 2.0
+import QtQuick.Window 2.0
+import io.qt.Backend 1.0
 
 Window {
     id: rhand
@@ -46,26 +47,7 @@ Window {
         }
     }
 
-    Rectangle{
-        id: rightHand
-        x: 20; y:rhand.height-50
-        width: rhand.width-40; height: 30
-        radius: rightHand.height/3
-        color: "#e9333d"
-        Text {
-            id: lable1
-            anchors.centerIn: parent
-            text: qsTr("Send")
-            color: "#f5f5f5"
-        }
-        MouseArea{
-            id: button1
-            anchors.fill: parent
-            onClicked: {
 
-            }
-        }
-    }
 
     Rectangle {
         x: 80; y: 520
@@ -81,6 +63,8 @@ Window {
             anchors.fill: parent
             anchors.margins: 5
         }
+
+
     }
 
     Rectangle {
@@ -386,4 +370,70 @@ Window {
             anchors.margins: 5
         }
     }
+
+    Rectangle{
+        id: rightHand
+        x: 100; y:20
+        width: (rhand.width)/2-30; height: 30
+        radius: rightHand.height/3
+        color: "#e9333d"
+        Text {
+            id: lable1
+            anchors.centerIn: parent
+            text: qsTr("Send")
+            color: "#f5f5f5"
+        }
+        MouseArea{
+            id: button1
+            anchors.fill: parent
+            onClicked: {
+                //rhand.signalExit()
+                //backend.sendClicked(input1.text);
+                backend.sendJoints(input1.text, input2.text, input3.text, input4.text, input5.text, input6.text, input7.text, input8.text, input9.text, input10.text, input11.text, input12.text, input13.text, input14.text, input15.text, input16.text, input17.text, input18.text, input19.text, input20.text, "Right" );
+
+            }
+        }
+    }
+
+    Rectangle{
+        id: rightHandEmit
+        x: 120 + rightHand.width; y: 20
+        //x: (rhand.width)/2 + 10; y:rhand.height-50
+        width: (rhand.width)/2-30; height: 30
+        radius: rightHand.height/3
+        color: "#e9333d"
+        Text {
+            id: lable2
+            anchors.centerIn: parent
+            text: qsTr("Emit")
+            color: "#f5f5f5"
+
+        }
+        MouseArea{
+            id: button2
+            anchors.fill: parent
+            onClicked: {
+                //rhand.signalExit()
+                backend.emitation("Right");
+            }
+        }
+    }
+
+    Rectangle {
+        x: (rhand.width)/2; y: 480
+        width: (rhand.width)/2; height: 30
+        color: "#3e3e3e"
+        border.color: "#e9333d"
+        radius: 10
+        TextInput {
+            id: input
+            color: "#f5f5f5"
+            text: ""
+            font.pointSize: 15
+            anchors.fill: parent
+            anchors.margins: 5
+        }
+    }
+
+
 }

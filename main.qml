@@ -1,13 +1,38 @@
 import QtQuick 2.5
-import QtQuick.Controls 1.4
+import QtQuick.Controls 2.0
+import QtQuick.Window 2.0
+import io.qt.Backend 1.0
 
-ApplicationWindow {
+Window {
     id: root
     visible: true
     width: 300
-    height: 150
+    height: 100
     title: qsTr("Main menu")
     color: "#1d1b1e"
+
+    Backend {
+        id: backend
+        /*onStatusChanged: {
+            //console.log(currentStatus);
+            ti.append(addMsg(newStatus));
+            if (currentStatus !== true)
+            {connect.enabled = true;
+            }
+                btn_
+        }
+        onSomeMessage: {
+            ti.append(addMsg(msg));
+        }
+        onSomeError: {
+            ti.append(addMsg("Error! " + err));
+            if (currentStatus !== true)
+            {
+                backend.disconnectClicked();
+            }
+            btn_connect.enabled = true;
+        }*/
+    }
 
     Rectangle {
         anchors.fill: parent
@@ -16,8 +41,8 @@ ApplicationWindow {
         Rectangle{
             id: rightHand
             x: 20; y:20
-            width: root.width-40; height: (root.height-80)/3
-            radius: rightHand.height/3
+            width: root.width-40; height: (root.height-60)/2
+            radius: rightHand.height/4
             color: "#e9333d"
             Text {
                 id: lable1
@@ -38,8 +63,8 @@ ApplicationWindow {
         Rectangle{
             id: leftHand
             x: 20; y:40+rightHand.height
-            width: root.width-40; height: (root.height-80)/3
-            radius: rightHand.height/3
+            width: root.width-40; height: (root.height-60)/2
+            radius: rightHand.height/4
             color: "#e9333d"
             Text {
                 id: lable2
@@ -55,29 +80,6 @@ ApplicationWindow {
                     root.hide()
                 }
             }
-        }
-
-        Rectangle{
-            id: graphic
-            x: 20; y:60+rightHand.height+leftHand.height
-            width: root.width-40; height: (root.height-80)/3
-            radius: rightHand.height/3
-            color: "#e9333d"
-            Text {
-                id: lable3
-                anchors.centerIn: parent
-                text: qsTr("Graphic")
-                color: "#f5f5f5"
-            }
-            MouseArea{
-                id: button3
-                anchors.fill: parent
-                onClicked: {
-                    graphicWindow.show()
-                    root.hide()
-                }
-            }
-
         }
     }
 
@@ -97,16 +99,6 @@ ApplicationWindow {
         visible: false
         onSignalExit: {
             leftWindow.close()
-            root.show()
-        }
-    }
-
-    Graphic{
-        id: graphicWindow
-        title: qsTr("Left hand")
-        visible: false
-        onSignalExit: {
-            graphicWindow.close()
             root.show()
         }
     }

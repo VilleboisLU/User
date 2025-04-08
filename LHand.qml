@@ -1,6 +1,7 @@
 import QtQuick 2.5
-import QtQuick.Controls 1.4
-import QtQuick.Window 2.2
+import QtQuick.Controls 2.0
+import QtQuick.Window 2.0
+import io.qt.Backend 1.0
 
 Window {
     id: lhand
@@ -49,7 +50,7 @@ Window {
     Rectangle{
         id: leftHand
         x: 20; y:lhand.height-50
-        width: lhand.width-40; height: 30
+        width: (lhand.width)/2-30; height: 30
         radius: leftHand.height/3
         color: "#e9333d"
         Text {
@@ -62,7 +63,28 @@ Window {
             id: button1
             anchors.fill: parent
             onClicked: {
+                backend.sendJoins(input1.text, input2.text, input3.text, input4.text, input5.text, input6.text, input7.text, input8.text, input9.text, input10.text, input11.text, input12.text, input13.text, input14.text, input15.text, input16.text, input17.text, input18.text, input19.text, input20.text, "Left" );
+            }
+        }
+    }
 
+    Rectangle{
+        id: leftHandEmit
+        x: (lhand.width)/2 + 10; y:lhand.height-50
+        width: (lhand.width)/2-30; height: 30
+        radius: leftHand.height/3
+        color: "#e9333d"
+        Text {
+            id: lable2
+            anchors.centerIn: parent
+            text: qsTr("Emit")
+            color: "#f5f5f5"
+        }
+        MouseArea{
+            id: button2
+            anchors.fill: parent
+            onClicked: {
+                backend.emitation();
             }
         }
     }
